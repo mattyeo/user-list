@@ -58,7 +58,7 @@ export class AppComponent implements OnInit {
 
   deleteUser(user: UserRecord) {
     var confirmMessage: string = `Are you sure that you want to delete the following user record: \n${user.nickname} \n${user.email} \n${user.ipAddress}`;
-    if (confirm(confirmMessage)){
+    if (confirm(confirmMessage)) {
       var indexOfUser = this.userList.findIndex(element => {
         return element.nickname == user.nickname &&
           element.email == user.email &&
@@ -95,7 +95,9 @@ export class AppComponent implements OnInit {
   }
 
   eraseList() {
-    this.userList = [];
+    if (confirm("Are you sure that you want to delete the entire list ?")) {
+      this.userList = [];
+    }
   }
 
 
